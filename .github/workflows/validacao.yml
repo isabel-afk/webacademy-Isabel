@@ -1,1 +1,17 @@
+name: Quarto Workflow
 
+on:
+    push:
+
+jobs:
+    quarto_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 
+              uses: actions/checkout@v5
+            - name: Verificar README
+              run: test -f ${{ github.workspace }}/README.md && echo "README encontrado" || echo "README não encontrado"
+            - name: Verificar LICENSE
+              run: test -f ${{ github.workspace }}/LICENSE && echo "LICENSE encontrado" || echo "LICENSE não encontrado"
+            - name: Verificar .gitignore
+              run: test -f ${{ github.workspace }}/.gitignore && echo ".gitignore encontrado" || echo ".gitignore não encontrado"
