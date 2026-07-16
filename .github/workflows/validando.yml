@@ -1,1 +1,17 @@
+name: Primeiro Workflow
 
+on:
+    push:
+
+jobs:
+    primeiro_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 
+              uses: actions/checkout@v5
+            - name: Verifica README.md
+              run: test -f README.md || echo "README.md existe" || (echo "README.md não encontrado" && exit 1)
+            - name: Verifica LICENSE
+              run: test -f LICENSE || echo "LICENSE existe" || (echo "LICENSE não encontrado" && exit 1)
+            - name: Verifica .gitignore
+              run: test -f .gitignore || echo ".gitignore existe" || (echo ".gitignore não encontrado" && exit 1)
