@@ -1,1 +1,21 @@
+name: Terceiro Workflow
 
+on:
+    push:
+
+env: 
+  CURSO: Integração Contínua
+
+jobs:
+    terceiro_job:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4 
+            - name: Curso
+              run: echo "Curso ${{ env.CURSO }}"
+            - name: usuário
+              run: echo "Usuário ${{ github.actor }}"
+            - name: Repositório
+              run: echo "Repositório ${{ github.repository }}"
+            - name: Branch
+              run: echo "Branch ${{ github.ref }}"
